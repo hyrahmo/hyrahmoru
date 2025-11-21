@@ -1,120 +1,139 @@
-/* --- HYRAHMO SYSTEM v3.0 (Hamburger + Theme + Lang) --- */
+/* --- HYRAHMO ORGANIC MINIMALISM --- */
 
 :root[data-theme="dark"] {
-    --bg: #050505;
-    --surface: #121212;
-    --text: #e0e0e0;
-    --gray: #888;
-    --border: #222;
-    --accent: #00f0ff; /* Cyber Blue */
-    --menu-bg: rgba(5, 5, 5, 0.95);
+    --bg: #0a0a0a;       /* Глубокий черный */
+    --text: #ffffff;
+    --dim: #888888;      /* Тусклый текст */
+    --accent: #3b82f6;   /* Акцент (синий) */
+    --border: #222;      /* Границы */
+    --overlay: rgba(10, 10, 10, 0.98); /* Цвет открытого меню */
 }
 
 :root[data-theme="light"] {
-    --bg: #f0f2f5;
-    --surface: #ffffff;
-    --text: #111;
-    --gray: #555;
-    --border: #ccc;
-    --accent: #0051ff; /* Royal Blue */
-    --menu-bg: rgba(255, 255, 255, 0.98);
+    --bg: #ffffff;
+    --text: #000000;
+    --dim: #666666;
+    --accent: #0051ff;
+    --border: #eaeaea;
+    --overlay: rgba(255, 255, 255, 0.98);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
 body { 
     font-family: 'Manrope', sans-serif; 
     background-color: var(--bg); 
     color: var(--text); 
-    line-height: 1.6;
-    transition: background 0.3s, color 0.3s;
+    line-height: 1.5;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Плавная смена темы */
+    overflow-x: hidden;
 }
 
 a { text-decoration: none; color: inherit; transition: 0.2s; }
 
-/* --- НАВИГАЦИЯ --- */
+/* --- ШАПКА (NAV) --- */
 nav {
-    position: fixed; top: 0; width: 100%; height: 70px;
-    background: var(--bg); border-bottom: 1px solid var(--border);
-    z-index: 2000; display: flex; align-items: center;
-}
-
-.nav-container {
-    width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px;
+    position: fixed; top: 0; left: 0; width: 100%; 
+    padding: 25px 20px; 
     display: flex; justify-content: space-between; align-items: center;
+    z-index: 5000;
+    background: transparent; /* Прозрачный фон для органичности */
+    /* Если хочешь размытие (как в iOS), раскомментируй строку ниже: */
+    /* backdrop-filter: blur(10px); */
 }
 
 .logo {
-    font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 1.4rem; color: var(--accent);
-    z-index: 2001; /* Чтобы лого было видно поверх открытого меню */
+    font-family: 'JetBrains Mono', monospace; 
+    font-weight: 800; 
+    font-size: 1.4rem;
+    letter-spacing: -1px;
+    z-index: 5001;
 }
 
-/* Десктопное меню */
-.desktop-menu { display: flex; gap: 25px; align-items: center; }
-.desktop-menu a { font-size: 0.9rem; font-weight: 600; color: var(--gray); }
-.desktop-menu a:hover { color: var(--accent); }
-
-/* Кнопки управления (Тема / Язык / Гамбургер) */
-.controls { display: flex; gap: 15px; align-items: center; z-index: 2001; }
-
-.icon-btn {
-    background: none; border: 1px solid var(--border); border-radius: 50%;
-    width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
-    color: var(--text); cursor: pointer;
+/* ПРАВАЯ ЧАСТЬ: Кнопки управления */
+.nav-controls {
+    display: flex; gap: 20px; align-items: center; z-index: 5001;
 }
 
-.lang-btn {
-    font-family: 'JetBrains Mono', monospace; font-weight: bold; font-size: 0.8rem;
-    border: 1px solid var(--border); padding: 0 10px; height: 36px; border-radius: 4px;
-    display: flex; align-items: center; cursor: pointer;
-}
-
-/* Гамбургер кнопка (скрыта на ПК) */
-.burger-btn {
-    display: none; flex-direction: column; gap: 5px;
-    background: none; border: none; cursor: pointer;
-}
-.burger-btn span {
-    display: block; width: 25px; height: 2px; background-color: var(--text);
+/* ОРГАНИЧНЫЕ КНОПКИ (Без рамок) */
+.clean-btn {
+    background: none; border: none;
+    color: var(--text); opacity: 0.6;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem; cursor: pointer;
+    font-weight: 600;
     transition: 0.3s;
 }
+.clean-btn:hover { opacity: 1; color: var(--accent); }
 
-/* Мобильное меню (скрыто по умолчанию) */
-.mobile-menu {
+/* Кнопка MENU (более заметная) */
+.menu-trigger {
+    font-weight: 800; opacity: 1; letter-spacing: 1px;
+}
+
+/* --- ПОЛНОЭКРАННОЕ МЕНЮ --- */
+.fullscreen-menu {
     position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-    background: var(--menu-bg); backdrop-filter: blur(10px);
+    background-color: var(--overlay); /* Берет цвет из темы */
     display: flex; flex-direction: column; justify-content: center; align-items: center;
     gap: 30px;
-    transform: translateY(-100%); /* Убрано наверх */
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1999;
+    z-index: 4000;
+    opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
 }
-.mobile-menu.active { transform: translateY(0); } /* Выезжает вниз */
-.mobile-menu a { font-size: 1.5rem; font-weight: 700; color: var(--text); }
 
-/* --- АДАПТИВ --- */
-@media (max-width: 768px) {
-    .desktop-menu { display: none; } /* Скрываем обычное меню */
-    .burger-btn { display: flex; }   /* Показываем гамбургер */
+.fullscreen-menu.active { opacity: 1; pointer-events: auto; }
+
+.fullscreen-menu a {
+    font-size: 2rem; font-weight: 700; color: var(--text);
+    position: relative;
+}
+.fullscreen-menu a:hover { color: var(--accent); }
+
+.blog-link {
+    color: var(--accent) !important; 
+    border-bottom: 2px solid var(--accent);
 }
 
 /* --- КОНТЕНТ --- */
-.page-wrapper { padding-top: 100px; max-width: 900px; margin: 0 auto; padding-bottom: 60px; padding-left: 20px; padding-right: 20px; }
+.page-wrapper { 
+    padding-top: 140px; max-width: 800px; margin: 0 auto; 
+    padding-left: 20px; padding-right: 20px; padding-bottom: 80px;
+    min-height: 100vh; /* Чтобы футер всегда был внизу */
+}
 
-h1 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 20px; }
-h2 { font-size: 1.8rem; margin-top: 40px; margin-bottom: 15px; color: var(--accent); }
-p { margin-bottom: 1.5rem; color: var(--gray); }
+h1 { font-size: 3rem; font-weight: 800; margin-bottom: 15px; line-height: 1.1; }
+h2 { font-size: 1.6rem; margin-top: 50px; margin-bottom: 20px; }
+p { margin-bottom: 1.5rem; color: var(--dim); font-size: 1.05rem; }
 
-/* Матрица ссылок */
+/* СЕТКА ССЫЛОК */
 .matrix-grid { 
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-top: 20px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-top: 30px;
 }
 .link-btn {
-    padding: 15px; text-align: center; border: 1px solid var(--border); border-radius: 8px;
-    background: var(--surface); color: var(--gray); font-family: 'JetBrains Mono'; font-size: 0.85rem;
+    padding: 15px; text-align: center; 
+    border: 1px solid var(--border); border-radius: 12px; /* Скругленные углы */
+    background: transparent; color: var(--dim); 
+    font-family: 'JetBrains Mono'; font-size: 0.85rem; font-weight: 600;
 }
-.major-link { border-color: var(--accent); color: var(--accent); }
+.link-btn:hover { 
+    border-color: var(--text); color: var(--text); background: rgba(128,128,128,0.1); 
+}
+.major-link { border-color: var(--dim); color: var(--text); }
 
-/* Анимация гамбургера при открытии */
-.burger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.burger-btn.active span:nth-child(2) { opacity: 0; }
-.burger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+/* --- FOOTER --- */
+footer { 
+    width: 100%;
+    padding: 40px 20px; 
+    text-align: center; 
+    border-top: 1px solid var(--border);
+    background-color: var(--bg); /* Явно задаем цвет фона */
+    color: var(--dim);
+    font-size: 0.8rem;
+}
+
+/* МОБИЛЬНЫЙ АДАПТИВ */
+@media (max-width: 600px) {
+    h1 { font-size: 2.2rem; }
+    nav { padding: 20px; }
+    .fullscreen-menu a { font-size: 1.8rem; }
+}
