@@ -22,6 +22,7 @@ title: Главная
   <a href="mailto:contact@hyrahmo.com" class="link-btn major-link">Email</a>
 </div>
 
+
 ---
 
 <!-- КНОПКИ НАВИГАЦИИ ПО РАЗДЕЛАМ -->
@@ -48,6 +49,4 @@ title: Главная
     <strong>Links</strong>
   </a>
 </div>
-
----
 
