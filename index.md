@@ -11,6 +11,17 @@ title: Главная
 Я создаю видео, пишу код, занимаюсь инвестициями и исследую мир через призму физики и математики.
 
 ---
+
+<!-- ОСНОВНЫЕ СОЦСЕТИ -->
+## Основные каналы
+
+<div class="matrix-grid">
+  <a href="https://youtube.com/@hyrahmo" target="_blank" class="link-btn major-link">YouTube</a>
+  <a href="https://t.me/hyrahmo" target="_blank" class="link-btn major-link">Telegram</a>
+  <a href="https://github.com/hyrahmo" target="_blank" class="link-btn major-link">GitHub</a>
+  <a href="mailto:contact@hyrahmo.com" class="link-btn major-link">Email</a>
+</div>
+
 ---
 
 <!-- КНОПКИ НАВИГАЦИИ ПО РАЗДЕЛАМ -->
@@ -34,18 +45,9 @@ title: Главная
 
    <a href="/links" class="nav-card">
     <span>04.</span>
-    <strong>Link Hub</strong>
+    <strong>Links</strong>
   </a>
 </div>
 
 ---
 
-<!-- ОСНОВНЫЕ СОЦСЕТИ -->
-## Основные каналы
-
-<div class="matrix-grid">
-  <a href="https://youtube.com/@hyrahmo" target="_blank" class="link-btn major-link">YouTube</a>
-  <a href="https://t.me/hyrahmo" target="_blank" class="link-btn major-link">Telegram</a>
-  <a href="https://github.com/hyrahmo" target="_blank" class="link-btn major-link">GitHub</a>
-  <a href="mailto:contact@hyrahmo.com" class="link-btn major-link">Email</a>
-</div>
