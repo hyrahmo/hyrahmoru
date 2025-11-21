@@ -123,3 +123,51 @@ footer {
 @media (max-width: 600px) {
     h1 { font-size: 2.2rem; }
 }
+
+/* --- НОВЫЕ КНОПКИ (В РЯД) --- */
+
+.hero-buttons {
+    display: flex;
+    flex-direction: row; /* Строго в ряд */
+    align-items: center;
+    gap: 15px;           /* Расстояние между кнопками */
+    margin-top: 20px;
+    margin-bottom: 50px; /* ОТСТУП СНИЗУ, чтобы линия не прилипала */
+    flex-wrap: wrap;     /* Перенос только на очень маленьких экранах */
+}
+
+/* Стиль акцентной кнопки (Wiki) */
+.btn-accent {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 240, 255, 0.05); /* Легкая подсветка */
+}
+.btn-accent:hover {
+    background: var(--accent);
+    color: #000; /* Черный текст при наведении для контраста */
+}
+
+/* Стиль обычной кнопки (Архив) */
+.btn-ghost {
+    border: 1px solid var(--border);
+    color: var(--dim);
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: 'JetBrains Mono', monospace;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-ghost:hover {
+    border-color: var(--text);
+    color: var(--text);
+}
