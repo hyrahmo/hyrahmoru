@@ -8,14 +8,18 @@ title: Dashboard
 **Media • Quant • Code • Gaming**
 
 От тактик в CS до алгоритмов в Quant Trading.  
-Я создаю видео, пишу код, занимаюсь инвестициями и исследую мир.
+Я создаю видео, пишу код и исследую мир.
+
+<!-- КНОПКА-ЯКОРЬ (Ведет вниз) -->
+<a href="#directory" class="clean-btn" style="border: 1px solid var(--border); padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; display: inline-block; margin-top: 10px;">
+  📂 Архив страниц ↓
+</a>
 
 ---
 
 ## Разделы
 
 <div class="nav-grid">
-  <!-- Ты можешь менять эти кнопки вручную здесь -->
   
   <a href="/media" class="nav-card">
     <span>01.</span>
@@ -34,11 +38,10 @@ title: Dashboard
 
    <a href="/links" class="nav-card">
     <span>04.</span>
-    <strong>Все ссылки</strong>
+    <strong>Link Hub</strong>
   </a>
 </div>
 
-<!-- Здесь будут соцсети -->
 ## Connect
 
 <div class="matrix-grid">
@@ -49,16 +52,20 @@ title: Dashboard
 </div>
 
 <br>
+<br>
 
-<!-- АВТОМАТИЧЕСКИЙ СПИСОК ВСЕХ СТРАНИЦ -->
-## Index / Все Страницы
+<!-- ЯКОРЬ ДЛЯ ПРОКРУТКИ -->
+<div id="directory"></div>
+
+## Все страницы
+<p style="font-size: 0.9rem; opacity: 0.6;">Полный список файлов в системе:</p>
 
 <div class="auto-list">
   {% for page in site.pages %}
     {% if page.title and page.url != "/" and page.url != "/404.html" %}
       <a href="{{ page.url }}" class="auto-link">
         <span>{{ page.title }}</span>
-        <span style="opacity: 0.5;">↗</span>
+        <span style="opacity: 0.5; font-family: monospace;">DIR ↗</span>
       </a>
     {% endif %}
   {% endfor %}
