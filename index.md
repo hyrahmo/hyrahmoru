@@ -10,19 +10,41 @@ title: Dashboard
 От тактик в CS до алгоритмов в Quant Trading.  
 Я создаю видео, пишу код и исследую мир.
 
-<!-- КНОПКА-ЯКОРЬ (Ведет вниз) -->
-<a href="#directory" class="clean-btn" style="border: 1px solid var(--border); padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; display: inline-block; margin-top: 10px;">
-  📂 Архив страниц ↓
-</a>
-<a href="wiki.hyrahmo.ru" target="_blank" class="link-btn major-link">
-  📂 YouTube ↓
-</a>
+<!-- БЛОК КНОПОК -->
+<div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+  
+  <!-- КНОПКА НА WIKI (Акцентная) -->
+  <a href="https://wiki.hyrahmo.ru" target="_blank" style="
+      border: 1px solid var(--accent); 
+      color: var(--accent); 
+      padding: 8px 14px; 
+      border-radius: 4px; 
+      font-size: 0.85rem; 
+      font-family: 'JetBrains Mono'; 
+      font-weight: 700;
+      text-decoration: none;">
+    🔓 Wiki / Uncensored ↗
+  </a>
+
+  <!-- КНОПКА АРХИВ (Обычная) -->
+  <a href="#directory" style="
+      border: 1px solid var(--border); 
+      color: var(--dim); 
+      padding: 8px 14px; 
+      border-radius: 4px; 
+      font-size: 0.85rem; 
+      font-family: 'JetBrains Mono';
+      text-decoration: none;">
+    📂 Архив страниц ↓
+  </a>
+
+</div>
+
 ---
 
 ## Разделы
 
 <div class="nav-grid">
-  
   <a href="/media" class="nav-card">
     <span>01.</span>
     <strong>Медиа & Бизнес</strong>
