@@ -14,7 +14,9 @@ title: Dashboard
 <a href="#directory" class="clean-btn" style="border: 1px solid var(--border); padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; display: inline-block; margin-top: 10px;">
   📂 Архив страниц ↓
 </a>
-
+<a href="wiki.hyrahmo.ru" target="_blank" class="link-btn major-link">
+  📂 YouTube ↓
+</a>
 ---
 
 ## Разделы
