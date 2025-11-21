@@ -13,9 +13,9 @@ title: Dashboard
 <!-- БЛОК КНОПОК (В РЯД) -->
 <div class="hero-buttons">
   
-  <!-- WIKI -->
+  <!-- WIKI / ROOT -->
   <a href="https://wiki.hyrahmo.ru" target="_blank" class="btn-accent">
-    🔓 Wiki / Uncensored ↗
+    🔓 Wiki / ROOT ↗
   </a>
 
   <!-- АРХИВ -->
