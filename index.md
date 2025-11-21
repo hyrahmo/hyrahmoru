@@ -10,37 +10,23 @@ title: Dashboard
 От тактик в CS до алгоритмов в Quant Trading.  
 Я создаю видео, пишу код и исследую мир.
 
-<!-- БЛОК КНОПОК -->
-<div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+<!-- БЛОК КНОПОК (В РЯД) -->
+<div class="hero-buttons">
   
-  <!-- КНОПКА НА WIKI (Акцентная) -->
-  <a href="https://wiki.hyrahmo.ru" target="_blank" style="
-      border: 1px solid var(--accent); 
-      color: var(--accent); 
-      padding: 8px 14px; 
-      border-radius: 4px; 
-      font-size: 0.85rem; 
-      font-family: 'JetBrains Mono'; 
-      font-weight: 700;
-      text-decoration: none;">
+  <!-- WIKI -->
+  <a href="https://wiki.hyrahmo.ru" target="_blank" class="btn-accent">
     🔓 Wiki / Uncensored ↗
   </a>
 
-  <!-- КНОПКА АРХИВ (Обычная) -->
-  <a href="#directory" style="
-      border: 1px solid var(--border); 
-      color: var(--dim); 
-      padding: 8px 14px; 
-      border-radius: 4px; 
-      font-size: 0.85rem; 
-      font-family: 'JetBrains Mono';
-      text-decoration: none;">
+  <!-- АРХИВ -->
+  <a href="#directory" class="btn-ghost">
     📂 Архив страниц ↓
   </a>
 
 </div>
 
 ---
+
 
 ## Разделы
 
