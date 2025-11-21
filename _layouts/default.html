@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} | HYRAHMO</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;800&family=Manrope:wght@400;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
@@ -14,25 +14,24 @@
         <a href="/" class="logo">HYRAHMO</a>
         
         <div class="nav-controls">
-            <!-- ЯЗЫК (Просто текст) -->
-            <button class="clean-btn" onclick="toggleLang()" id="langBtn">RU</button>
-            
-            <!-- ТЕМА (Простая иконка) -->
+            <!-- Кнопка БЛОГ (сразу в шапке) -->
+            <a href="https://blog.hyrahmo.com" target="_blank" class="header-blog-link">BLOG</a>
+
+            <!-- ТЕМА -->
             <button class="clean-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 1.2rem;">☀</button>
             
-            <!-- МЕНЮ (Текст) -->
+            <!-- МЕНЮ -->
             <button class="clean-btn menu-trigger" onclick="toggleMenu()">MENU</button>
         </div>
     </nav>
 
-    <!-- ПОЛНОЭКРАННОЕ МЕНЮ -->
+    <!-- ВЫПАДАЮЩЕЕ МЕНЮ (На весь экран) -->
     <div class="fullscreen-menu" id="fsMenu">
         <a href="/" onclick="toggleMenu()">Главная</a>
-        <a href="/media" onclick="toggleMenu()">Медиа</a>
+        <a href="/media" onclick="toggleMenu()">Медиа & Biz</a>
         <a href="/cs" onclick="toggleMenu()">Code / CS</a>
-        <a href="/physics" onclick="toggleMenu()">Наука</a>
-        <a href="/links" onclick="toggleMenu()">Links Hub</a>
-        <a href="https://blog.hyrahmo.com" class="blog-link" target="_blank">BLOG</a>
+        <a href="/physics" onclick="toggleMenu()">Science</a>
+        <a href="/links" onclick="toggleMenu()">Все ссылки</a>
     </div>
 
     <main class="page-wrapper">
@@ -40,7 +39,7 @@
     </main>
 
     <footer>
-        HYRAHMO &copy; 2025. System Online.
+        HYRAHMO &copy; 2025
     </footer>
 
     <script>
@@ -52,7 +51,7 @@
             
             if (isOpen) {
                 btn.innerText = "CLOSE";
-                document.body.style.overflow = "hidden"; // Блокируем скролл
+                document.body.style.overflow = "hidden";
             } else {
                 btn.innerText = "MENU";
                 document.body.style.overflow = "auto";
@@ -72,23 +71,8 @@
         function setTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
-            // Меняем иконку
             const btn = document.getElementById('themeBtn');
             btn.innerText = theme === 'dark' ? '☀' : '☾';
-        }
-
-        // 3. ЯЗЫК
-        let currentLang = localStorage.getItem('lang') || 'ru';
-        updateLangBtn(currentLang);
-
-        function toggleLang() {
-            currentLang = currentLang === 'ru' ? 'en' : 'ru';
-            localStorage.setItem('lang', currentLang);
-            updateLangBtn(currentLang);
-        }
-
-        function updateLangBtn(lang) {
-            document.getElementById('langBtn').innerText = lang.toUpperCase();
         }
     </script>
 </body>
