@@ -1,0 +1,7 @@
+title: HYRAHMO
+description: Digital Hub
+baseurl: ""
+url: "https://hyrahmo.github.io"
+permalink: /:title/
+markdown: kramdown
+theme: null
