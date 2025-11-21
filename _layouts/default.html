@@ -5,127 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} | HYRAHMO</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@300;500;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;800&family=Manrope:wght@400;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
 
-    <!-- НАВИГАЦИЯ -->
     <nav>
-        <div class="nav-container">
-            <a href="/" class="logo">HYRAHMO_</a>
-
-            <!-- Меню для ПК -->
-            <div class="desktop-menu">
-                <a href="/" data-key="nav_home">Главная</a>
-                <a href="/media" data-key="nav_media">Медиа</a>
-                <a href="/cs" data-key="nav_cs">Код (CS)</a>
-                <a href="/physics" data-key="nav_science">Наука</a>
-                <a href="https://blog.hyrahmo.com" target="_blank" style="color: var(--accent);" data-key="nav_blog">Блог ↗</a>
-            </div>
-
-            <!-- Кнопки управления -->
-            <div class="controls">
-                <!-- Язык -->
-                <button class="lang-btn" onclick="toggleLang()">RU</button>
-                
-                <!-- Тема -->
-                <button class="icon-btn" onclick="toggleTheme()">
-                    <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                </button>
-
-                <!-- Гамбургер (Только мобилка) -->
-                <button class="burger-btn" onclick="toggleMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+        <a href="/" class="logo">HYRAHMO</a>
+        
+        <div class="nav-controls">
+            <!-- ЯЗЫК (Просто текст) -->
+            <button class="clean-btn" onclick="toggleLang()" id="langBtn">RU</button>
+            
+            <!-- ТЕМА (Простая иконка) -->
+            <button class="clean-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 1.2rem;">☀</button>
+            
+            <!-- МЕНЮ (Текст) -->
+            <button class="clean-btn menu-trigger" onclick="toggleMenu()">MENU</button>
         </div>
     </nav>
 
-    <!-- МОБИЛЬНОЕ МЕНЮ (Выезжает сверху) -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="/" onclick="toggleMenu()" data-key="nav_home">Главная</a>
-        <a href="/media" onclick="toggleMenu()" data-key="nav_media">Медиа</a>
-        <a href="/cs" onclick="toggleMenu()" data-key="nav_cs">Код (CS)</a>
-        <a href="/physics" onclick="toggleMenu()" data-key="nav_science">Наука</a>
-        <a href="/links" onclick="toggleMenu()" data-key="nav_links">Все ссылки</a>
-        <a href="https://blog.hyrahmo.com" target="_blank" style="color: var(--accent);" data-key="nav_blog">Wiki / Блог ↗</a>
+    <!-- ПОЛНОЭКРАННОЕ МЕНЮ -->
+    <div class="fullscreen-menu" id="fsMenu">
+        <a href="/" onclick="toggleMenu()">Главная</a>
+        <a href="/media" onclick="toggleMenu()">Медиа</a>
+        <a href="/cs" onclick="toggleMenu()">Code / CS</a>
+        <a href="/physics" onclick="toggleMenu()">Наука</a>
+        <a href="/links" onclick="toggleMenu()">Links Hub</a>
+        <a href="https://blog.hyrahmo.com" class="blog-link" target="_blank">BLOG</a>
     </div>
 
     <main class="page-wrapper">
         {{ content }}
     </main>
 
-    <footer style="text-align: center; padding: 40px; color: var(--gray); border-top: 1px solid var(--border); margin-top: 50px;">
-        &copy; 2025 HYRAHMO.
+    <footer>
+        HYRAHMO &copy; 2025. System Online.
     </footer>
 
-    <!-- СКРИПТЫ -->
     <script>
-        // 1. ЛОГИКА МЕНЮ (ГАМБУРГЕР)
+        // 1. МЕНЮ
         function toggleMenu() {
-            document.getElementById('mobileMenu').classList.toggle('active');
-            document.querySelector('.burger-btn').classList.toggle('active');
+            const menu = document.getElementById('fsMenu');
+            const btn = document.querySelector('.menu-trigger');
+            const isOpen = menu.classList.toggle('active');
+            
+            if (isOpen) {
+                btn.innerText = "CLOSE";
+                document.body.style.overflow = "hidden"; // Блокируем скролл
+            } else {
+                btn.innerText = "MENU";
+                document.body.style.overflow = "auto";
+            }
         }
 
-        // 2. ЛОГИКА ТЕМЫ
-        // Проверяем, что было сохранено раньше
+        // 2. ТЕМА
         const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
+        setTheme(savedTheme);
 
         function toggleTheme() {
-            const html = document.documentElement;
-            const current = html.getAttribute('data-theme');
+            const current = document.documentElement.getAttribute('data-theme');
             const next = current === 'dark' ? 'light' : 'dark';
-            
-            html.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next); // Запоминаем выбор
+            setTheme(next);
         }
 
-        // 3. ЛОГИКА ЯЗЫКА (ПЕРЕВОД МЕНЮ)
-        const translations = {
-            ru: {
-                nav_home: "Главная",
-                nav_media: "Медиа",
-                nav_cs: "Код (CS)",
-                nav_science: "Наука",
-                nav_links: "Все ссылки",
-                nav_blog: "Wiki / Блог ↗"
-            },
-            en: {
-                nav_home: "Home",
-                nav_media: "Media & Biz",
-                nav_cs: "Code (CS)",
-                nav_science: "Science",
-                nav_links: "All Links",
-                nav_blog: "Wiki / Blog ↗"
-            }
-        };
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            // Меняем иконку
+            const btn = document.getElementById('themeBtn');
+            btn.innerText = theme === 'dark' ? '☀' : '☾';
+        }
 
+        // 3. ЯЗЫК
         let currentLang = localStorage.getItem('lang') || 'ru';
-        const langBtn = document.querySelector('.lang-btn');
-        
-        // Применяем язык при загрузке
-        applyLang(currentLang);
+        updateLangBtn(currentLang);
 
         function toggleLang() {
             currentLang = currentLang === 'ru' ? 'en' : 'ru';
-            applyLang(currentLang);
-            localStorage.setItem('lang', currentLang); // Запоминаем выбор
+            localStorage.setItem('lang', currentLang);
+            updateLangBtn(currentLang);
         }
 
-        function applyLang(lang) {
-            langBtn.innerText = lang.toUpperCase();
-            
-            // Находим все элементы с атрибутом data-key и меняем текст
-            document.querySelectorAll('[data-key]').forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (translations[lang][key]) {
-                    el.innerText = translations[lang][key];
-                }
-            });
+        function updateLangBtn(lang) {
+            document.getElementById('langBtn').innerText = lang.toUpperCase();
         }
     </script>
 </body>
