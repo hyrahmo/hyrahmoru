@@ -1,12 +1,12 @@
-/* --- HYRAHMO ORGANIC MINIMALISM --- */
+/* --- HYRAHMO ORGANIC CLEAN --- */
 
 :root[data-theme="dark"] {
-    --bg: #0a0a0a;       /* Глубокий черный */
+    --bg: #0a0a0a;       
     --text: #ffffff;
-    --dim: #888888;      /* Тусклый текст */
-    --accent: #3b82f6;   /* Акцент (синий) */
-    --border: #222;      /* Границы */
-    --overlay: rgba(10, 10, 10, 0.98); /* Цвет открытого меню */
+    --dim: #888888;      
+    --accent: #3b82f6;   
+    --border: #222;      
+    --overlay: rgba(10, 10, 10, 0.98);
 }
 
 :root[data-theme="light"] {
@@ -25,7 +25,7 @@ body {
     background-color: var(--bg); 
     color: var(--text); 
     line-height: 1.5;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Плавная смена темы */
+    transition: background-color 0.3s ease, color 0.3s ease;
     overflow-x: hidden;
 }
 
@@ -34,106 +34,115 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 /* --- ШАПКА (NAV) --- */
 nav {
     position: fixed; top: 0; left: 0; width: 100%; 
-    padding: 25px 20px; 
+    padding: 20px 20px; 
     display: flex; justify-content: space-between; align-items: center;
     z-index: 5000;
-    background: transparent; /* Прозрачный фон для органичности */
-    /* Если хочешь размытие (как в iOS), раскомментируй строку ниже: */
-    /* backdrop-filter: blur(10px); */
+    /* ВАЖНО: Сплошной фон, чтобы текст не просвечивал при скролле */
+    background-color: var(--bg); 
+    border-bottom: 1px solid transparent; /* Можно включить var(--border), если нужна линия */
 }
+
+/* Добавляем небольшую тень или линию при скролле (опционально), 
+   но пока оставим чисто */
 
 .logo {
     font-family: 'JetBrains Mono', monospace; 
     font-weight: 800; 
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     letter-spacing: -1px;
     z-index: 5001;
 }
 
-/* ПРАВАЯ ЧАСТЬ: Кнопки управления */
 .nav-controls {
     display: flex; gap: 20px; align-items: center; z-index: 5001;
 }
 
-/* ОРГАНИЧНЫЕ КНОПКИ (Без рамок) */
+/* Кнопки шапки */
 .clean-btn {
     background: none; border: none;
-    color: var(--text); opacity: 0.6;
+    color: var(--text); 
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.9rem; cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
     transition: 0.3s;
 }
-.clean-btn:hover { opacity: 1; color: var(--accent); }
+.clean-btn:hover { color: var(--accent); }
 
-/* Кнопка MENU (более заметная) */
-.menu-trigger {
-    font-weight: 800; opacity: 1; letter-spacing: 1px;
+/* Ссылка на блог в шапке */
+.header-blog-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700; font-size: 0.9rem;
+    color: var(--accent);
 }
 
 /* --- ПОЛНОЭКРАННОЕ МЕНЮ --- */
 .fullscreen-menu {
     position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-    background-color: var(--overlay); /* Берет цвет из темы */
+    background-color: var(--bg); /* Фон меню такой же как у сайта */
     display: flex; flex-direction: column; justify-content: center; align-items: center;
     gap: 30px;
     z-index: 4000;
-    opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
 }
 
 .fullscreen-menu.active { opacity: 1; pointer-events: auto; }
 
 .fullscreen-menu a {
-    font-size: 2rem; font-weight: 700; color: var(--text);
-    position: relative;
+    font-size: 2rem; font-weight: 800; color: var(--text);
 }
 .fullscreen-menu a:hover { color: var(--accent); }
 
-.blog-link {
-    color: var(--accent) !important; 
-    border-bottom: 2px solid var(--accent);
-}
 
 /* --- КОНТЕНТ --- */
 .page-wrapper { 
-    padding-top: 140px; max-width: 800px; margin: 0 auto; 
+    padding-top: 120px; /* Отступ, чтобы шапка не закрывала заголовок */
+    max-width: 800px; margin: 0 auto; 
     padding-left: 20px; padding-right: 20px; padding-bottom: 80px;
-    min-height: 100vh; /* Чтобы футер всегда был внизу */
+    min-height: 100vh;
 }
 
 h1 { font-size: 3rem; font-weight: 800; margin-bottom: 15px; line-height: 1.1; }
-h2 { font-size: 1.6rem; margin-top: 50px; margin-bottom: 20px; }
+h2 { font-size: 1.5rem; margin-top: 50px; margin-bottom: 20px; font-weight: 700; }
 p { margin-bottom: 1.5rem; color: var(--dim); font-size: 1.05rem; }
 
-/* СЕТКА ССЫЛОК */
+/* Кнопки навигации по разделам (CS, Media...) */
+.nav-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px; margin-bottom: 40px;
+}
+
+.nav-card {
+    padding: 20px; 
+    border: 1px solid var(--border); border-radius: 8px;
+    display: flex; flex-direction: column; gap: 5px;
+}
+.nav-card:hover { border-color: var(--text); background: rgba(128,128,128,0.05); }
+
+.nav-card span { font-size: 0.8rem; color: var(--dim); font-family: 'JetBrains Mono'; }
+.nav-card strong { font-size: 1.2rem; font-weight: 700; }
+
+/* Сетка соцсетей */
 .matrix-grid { 
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-top: 30px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px;
 }
 .link-btn {
-    padding: 15px; text-align: center; 
-    border: 1px solid var(--border); border-radius: 12px; /* Скругленные углы */
+    padding: 12px; text-align: center; 
+    border: 1px solid var(--border); border-radius: 6px;
     background: transparent; color: var(--dim); 
     font-family: 'JetBrains Mono'; font-size: 0.85rem; font-weight: 600;
 }
 .link-btn:hover { 
-    border-color: var(--text); color: var(--text); background: rgba(128,128,128,0.1); 
+    border-color: var(--text); color: var(--text); 
 }
 .major-link { border-color: var(--dim); color: var(--text); }
 
-/* --- FOOTER --- */
 footer { 
-    width: 100%;
-    padding: 40px 20px; 
-    text-align: center; 
-    border-top: 1px solid var(--border);
-    background-color: var(--bg); /* Явно задаем цвет фона */
-    color: var(--dim);
-    font-size: 0.8rem;
+    text-align: center; padding: 40px 20px; 
+    border-top: 1px solid var(--border); color: var(--dim); font-size: 0.8rem; 
+    margin-top: 40px;
 }
 
-/* МОБИЛЬНЫЙ АДАПТИВ */
 @media (max-width: 600px) {
     h1 { font-size: 2.2rem; }
-    nav { padding: 20px; }
-    .fullscreen-menu a { font-size: 1.8rem; }
+    .nav-controls { gap: 15px; }
 }
