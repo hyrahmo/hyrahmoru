@@ -14,51 +14,28 @@
         <a href="/" class="logo">HYRAHMO</a>
         
         <div class="nav-controls">
-            <!-- Кнопка БЛОГ (сразу в шапке) -->
+            <!-- Блог -->
             <a href="https://blog.hyrahmo.com" target="_blank" class="header-blog-link">BLOG</a>
-
-            <!-- ТЕМА -->
-            <button class="clean-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 1.2rem;">☀</button>
-            
-            <!-- МЕНЮ -->
-            <button class="clean-btn menu-trigger" onclick="toggleMenu()">MENU</button>
+            <!-- Тема -->
+            <button class="clean-btn" onclick="toggleTheme()" id="themeBtn">☀</button>
         </div>
     </nav>
-
-    <!-- ВЫПАДАЮЩЕЕ МЕНЮ (На весь экран) -->
-    <div class="fullscreen-menu" id="fsMenu">
-        <a href="/" onclick="toggleMenu()">Главная</a>
-        <a href="/media" onclick="toggleMenu()">Медиа & Biz</a>
-        <a href="/cs" onclick="toggleMenu()">Code / CS</a>
-        <a href="/physics" onclick="toggleMenu()">Science</a>
-        <a href="/links" onclick="toggleMenu()">Все ссылки</a>
-    </div>
 
     <main class="page-wrapper">
         {{ content }}
     </main>
 
     <footer>
-        HYRAHMO &copy; 2025
+        <div class="footer-links">
+            <a href="mailto:contact@hyrahmo.com">Email</a>
+            <a href="https://github.com/hyrahmo" target="_blank">GitHub</a>
+            <a href="https://t.me/hyrahmo" target="_blank">Telegram</a>
+        </div>
+        <p>HYRAHMO &copy; {{ site.time | date: '%Y' }}. All Systems Normal.</p>
     </footer>
 
     <script>
-        // 1. МЕНЮ
-        function toggleMenu() {
-            const menu = document.getElementById('fsMenu');
-            const btn = document.querySelector('.menu-trigger');
-            const isOpen = menu.classList.toggle('active');
-            
-            if (isOpen) {
-                btn.innerText = "CLOSE";
-                document.body.style.overflow = "hidden";
-            } else {
-                btn.innerText = "MENU";
-                document.body.style.overflow = "auto";
-            }
-        }
-
-        // 2. ТЕМА
+        // ЛОГИКА ТЕМЫ
         const savedTheme = localStorage.getItem('theme') || 'dark';
         setTheme(savedTheme);
 
@@ -71,8 +48,7 @@
         function setTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
-            const btn = document.getElementById('themeBtn');
-            btn.innerText = theme === 'dark' ? '☀' : '☾';
+            document.getElementById('themeBtn').innerText = theme === 'dark' ? '☀' : '☾';
         }
     </script>
 </body>
